@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @item.notes %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%= @item.created %>
+</p>
+
+<p>
+  <b>Automated test:</b>
+  <%= @item.automated_test %>
+</p>
+
+<p>
+  <b>Manual test:</b>
+  <%= @item.manual_test %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Delete', @item, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+<%= link_to 'Back', items_path %>

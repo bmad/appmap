@@ -1,0 +1,39 @@
+<h1>Application Map</h1>
+
+<%= link_to 'New Item', new_item_path %>
+<br />
+<table id="application_map_table">
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Automated</th>
+    <th>Manual</th>
+    <th></th>
+  </tr>
+
+<% @items.each do |item| %>
+  <tr id="item_<%= item.id %>" >
+    <td><%= link_to 'Edit', edit_item_path(item) %></td>
+    <td class="name"><%= item.name %></td>
+    <td class="automated true_false">
+      <a href="#">
+      <% if item.automated_test? %>
+        <%= image_tag "true.png" %>
+      <% else %>
+        <%= image_tag "false.png" %>
+      <% end %>
+    </a>
+    </td>
+    <td class="manual true_false">
+      <a href="#">
+      <% if item.manual_test? %>
+        <%= image_tag "true.png" %>
+      <% else %>
+        <%= image_tag "false.png" %>
+      <% end %>
+    </a>
+    </td>
+    <td><%= link_to 'Delete', item, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>

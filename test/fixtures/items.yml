@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  notes: MyText
+  created: 2012-08-24 21:29:05
+  automated_test: false
+  manual_test: false
+
+two:
+  name: MyString
+  notes: MyText
+  created: 2012-08-24 21:29:05
+  automated_test: false
+  manual_test: false
