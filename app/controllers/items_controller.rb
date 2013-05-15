@@ -70,16 +70,33 @@ class ItemsController < ApplicationController
   end
 
   def update_automation
-        @item = Item.find(params[:id])
-        if params[:value] == 'true'
+        @item = Item.find(params[:item_id])
+        if params[:value] == 'True'
           @item.automated_test = true
+        else
+          @item.automated_test = false
+        end
+
+    respond_to do |format|
+      if @item.save!
+        format.json { render :json => "success" }
+      else
+        format.json { render :json => @item.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_manual
+        @item = Item.find(params[:item_id])
+        if params[:value] == 'True'
+          @item.manual_test = true
         else
           @item.manual_test = false
         end
 
     respond_to do |format|
       if @item.save!
-        format.json { head :no_content }
+        format.json { render :json => "success" }
       else
         format.json { render :json => @item.errors, :status => :unprocessable_entity }
       end
@@ -93,8 +110,7 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to items_url }
-      format.json { head :no_content }
+      format.json { render :json => "success" }
     end
   end
 end

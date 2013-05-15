@@ -1,10 +1,10 @@
 AppMap::Application.routes.draw do
-  resources :items
 
   get "home/index"
 
   resources :items do
     put 'update_automation'
+    put 'update_manual'
   end
 
 
